@@ -8,3 +8,7 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
+
+// CRUD
+Route::resource('guru', 'GuruController');
+Route::resource('rayon', 'RayonController');
