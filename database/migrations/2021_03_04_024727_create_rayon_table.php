@@ -16,7 +16,7 @@ class CreateRayonTable extends Migration
         Schema::create('rayon', function (Blueprint $table) {
             $table->id();
             $table->string('nama_rayon');
-            $table->unsignedBigInteger('guru_id');
+            $table->unsignedBigInteger('guru_id')->nullable();
             $table->timestamps();
         });
     }

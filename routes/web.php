@@ -19,4 +19,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::view('/siswa/create', 'siswa.create')->name('siswa_create');
 
+Route::prefix('siswa')
+    ->middleware(['auth'])
+    ->group(function() {
+        Route::get('/', 'SiswaController@index')->name('siswa.index');
+        Route::get('/create', 'SiswaController@create')->name('siswa.create');
+        Route::post('/create/store', 'SiswaController@store')->name('siswa.store');
+        Route::get('/{id}/edit', 'SiswaController@edit');
+});

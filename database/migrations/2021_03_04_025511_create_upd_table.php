@@ -15,7 +15,7 @@ class CreateUpdTable extends Migration
     {
         Schema::create('upd', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('siswa_id');
+            $table->unsignedBigInteger('siswa_id')->nullable();
             $table->timestamps();
         });
     }
