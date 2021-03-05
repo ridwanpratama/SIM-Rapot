@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Absen;
 use Illuminate\Http\Request;
 
 class AbsenController extends Controller
@@ -13,7 +14,8 @@ class AbsenController extends Controller
      */
     public function index()
     {
-        //
+        $absen = Absen::latest()->paginate(1);
+        return view('absen.index', compact('absen'));
     }
 
     /**
@@ -23,7 +25,7 @@ class AbsenController extends Controller
      */
     public function create()
     {
-        //
+        return view('absen.create');
     }
 
     /**
@@ -34,7 +36,16 @@ class AbsenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $absenBaru = new Absen();
+
+        $absenBaru->siswa_id = $request->siswa_id;
+        $absenBaru->sakit = $request->sakit;
+        $absenBaru->izin = $request->izin;
+        $absenBaru->alpha = $request->alpha;
+
+        $absenBaru->save();
+
+        return redirect(route('absen.index'));
     }
 
     /**
@@ -56,7 +67,8 @@ class AbsenController extends Controller
      */
     public function edit($id)
     {
-        //
+        $absen = Absen::find($id);
+        return view('absen.edit', compact('absen'));
     }
 
     /**
@@ -68,7 +80,15 @@ class AbsenController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $absen = Absen::find($id);
+        $absen->update([
+            'siswa_id' => $request->siswa_id,
+            'sakit' => $request->sakit,
+            'izin' => $request->izin,
+            'alpha' => $request->alpha,
+        ]);
+
+        return redirect()->route('absen.index')->with('message', 'Mapel berhasil di perbarui');
     }
 
     /**
@@ -79,6 +99,8 @@ class AbsenController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $absen = Absen::find($id);
+        $absen->delete();
+        return redirect(route('absen.index'));
     }
 }
