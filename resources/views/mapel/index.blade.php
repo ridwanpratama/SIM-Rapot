@@ -30,6 +30,7 @@
 				      		{{method_field('DELETE')}}
 				      		<button class="btn btn-danger" onclick="return confirm('apakah anda yakin ingin menghapus Mata Pelajaran: {{$mapel->nama_mapel}}')">Hapus</button>
 				      		<a href="{{route('mapel.edit',[$mapel->id])}}" class="btn btn-warning">Ubah</a>
+				      		<a href="{{route('mapel.show',$mapel->id)}}" class="btn btn-primary">Lihat</a>
 				      	</td>
 				      		
 				      	</form>
