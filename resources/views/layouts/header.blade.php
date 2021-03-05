@@ -20,6 +20,7 @@
             </div>
         </a>
         <div class="dropdown-menu dropdown-menu-right pt-0">
+            
             <div class="dropdown-header bg-light py-2"><strong>Account</strong></div>
             <a class="dropdown-item" href="#">
                 <i class="c-icon mfe-2 cil-user"></i>Profile
@@ -33,6 +34,11 @@
         </div>
     </li>
 </ul>
+
 <div class="c-subheader justify-content-between px-3">
     @yield('breadcrumb')
 </div>
+
+
+
+

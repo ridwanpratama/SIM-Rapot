@@ -39,6 +39,18 @@
                                 </div>
                             </div>
 
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="select1">Rayon</label>
+                                <div class="col-md-9">
+                                    <select class="form-control" id="rayon_id" name="rayon_id">
+                                        <option value="0">--Pilih Rayon--</option>
+                                        @foreach (App\Rayon::all() as $rayon)
+                                            <option value="{{ $rayon->id }}">{{ $rayon->nama_rayon }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
                             {{-- Nunggu table lain selesai, data relasi --}}
 
                             {{-- <div class="form-group row">

@@ -23,7 +23,7 @@ class SiswaController extends Controller
 
     public function index()
     {
-        $siswa = Siswa::latest()->paginate(15);
+        $siswa = Siswa::latest()->paginate(1);
         return view('siswa.index',compact('siswa'));
     }
 
@@ -39,7 +39,9 @@ class SiswaController extends Controller
         Siswa::create([
             'nis' => $request->nis,
             'nama_siswa' => $request->nama_siswa,
-            'rombel' => $request->rombel
+            'rombel' => $request->rombel,
+            'rayon_id' => $request->rayon_id,
+            'jurusan_id' => $request->jurusan_id
         ]);
 
         return redirect('siswa');
@@ -47,23 +49,28 @@ class SiswaController extends Controller
 
     public function edit($id)
     {
-        $siswa = Siswa::findOrFail($id);
+        $siswa = Siswa::find($id);
         return view('siswa.edit',compact('siswa'));
     }
 
     public function update(Request $request, $id)
     {
-        $siswa = Siswa::findOrFail($id);
-        $attr = $request->all();
-        
-        $this->validation($request);
+        $siswa = Siswa::find($id);
+        $siswa->update([
+            'nis' => $request->get('nis'),
+            'nama_siswa' => $request->get('nama_siswa'),
+            'rombel' => $request->get('rombel'),
+            'rayon_id' => $request->get('rayon_id'),
+            'jurusan_id' => $request->get('jurusan_id')
+        ]);
 
-        $siswa->update($attr);
-        return redirect()->route('siswa.index');
+        return redirect()->route('siswa.index')->with('message','Mapel berhasil di perbarui');
     }
 
     public function destroy($id)
     {
-        //
+        $siswa = Siswa::find($id);
+        $siswa->delete();
+        return redirect('siswa');
     }
 }

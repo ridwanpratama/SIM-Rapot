@@ -3,7 +3,6 @@
     <ol class="breadcrumb border-0 m-0">
         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
         <li class="breadcrumb-item"><a href="{{ route('siswa.index') }}">Data Siswa</a></li>
-        <li class="breadcrumb-item"><a href="">Edit Data Siswa</a></li>
     </ol>
 @endsection
 @section('content')
@@ -13,8 +12,9 @@
                 <div class="card">
                     <div class="card-header">NIS</div>
                     <div class="card-body">
-                        <form class="form-horizontal" action="{{ route('siswa.update') }}" method="post">
+                        <form class="form-horizontal" action="{{route('siswa.update',[$siswa->id])}}" method="post" enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label">NIS</label>
                                 <div class="col-md-9">

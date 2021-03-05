@@ -1,7 +1,4 @@
 @extends('layouts.app')
-@section('third_party_stylesheets')
-  
-@endsection
 @section('breadcrumb')
     <ol class="breadcrumb border-0 m-0">
         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
@@ -36,11 +33,17 @@
                                     <td>{{ $item->nis }}</td>
                                     <td>{{ $item->nama_siswa }}</td>
                                     <td>{{ $item->rombel }}</td>
-                                    <td>{{ $item->rayon_id }}</td>
-                                    <td>{{ $item->jurusan_id }}</td>
+                                    <td>{{ $item->rayon->nama_rayon }}</td>
+                                    <td>{{ $item->jurusan->nama_jurusan }}</td>
                                     <td>
-                                        <a href="/siswa/{{ $item->id }}/edit" class="btn btn-sm btn-warning" type="button">Edit</a>
-                                        <button class="btn btn-sm btn-danger" type="button">Hapus</button>
+                                        <form action="{{route('siswa.destroy',[$item->id])}}" method="post">
+                                            {{csrf_field()}}
+                                            {{method_field('DELETE')}}
+                                            <button class="btn btn-danger btn-sm" onclick="return confirm('apakah anda yakin ingin menghapus siswa: {{$item->nama_siswa}}')">Hapus</button>
+                                            <a href="{{route('siswa.edit',[$item->id])}}" class="btn btn-warning btn-sm">Ubah</a>
+                                        </td>
+                                            
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -53,11 +56,3 @@
         </div>
     </div>
 @endsection
-
-@section('third_party_scripts')
-
-@endsection
-
-@push('page-script')
-
-@endpush
