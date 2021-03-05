@@ -3,7 +3,11 @@
     <i class="c-icon c-icon-lg cil-menu"></i>
 </button>
 <a class="c-header-brand d-lg-none c-header-brand-sm-up-center" href="#">
+<<<<<<< HEAD
     <img src="{{ asset('images/logo.png') }}" width="118" alt="Brand Logo">
+=======
+    <img src="http://s.sim.siap-online.com//upload/sekolah/20220299.141015140632.png" width="118" alt="Brand Logo">
+>>>>>>> c3854c3da05942eb80db5b575d7769a7d4dd90dd
 </a>
 <button class="c-header-toggler c-class-toggler mfs-3 d-md-down-none" type="button" data-target="#sidebar"
         data-class="c-sidebar-lg-show" responsive="true">
