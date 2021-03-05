@@ -51,23 +51,17 @@
                                 </div>
                             </div>
 
-                            {{-- Nunggu table lain selesai, data relasi --}}
-
-                            {{-- <div class="form-group row">
-                                <label class="col-md-3 col-form-label">Jurusan</label>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="select1">Jurusan</label>
                                 <div class="col-md-9">
-                                    <input class="form-control" id="jurusan_id" type="number" name="jurusan_id"
-                                        placeholder="Masukkan jurusan siswa..">
+                                    <select class="form-control" id="jurusan_id" name="jurusan_id">
+                                        <option value="0">--Pilih Jurusan--</option>
+                                        @foreach (App\Jurusan::all() as $jurusan)
+                                            <option value="{{ $jurusan->id }}">{{ $jurusan->nama_jurusan }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
-
-                            <div class="form-group row">
-                                <label class="col-md-3 col-form-label" for="hf-password">Rayon</label>
-                                <div class="col-md-9">
-                                    <input class="form-control" id="rayon_id" type="number" name="rayon_id"
-                                        placeholder="Masukkan rayon siswa..">
-                                </div>
-                            </div> --}}
 
                             <div class="form-group">
                                 <button class="btn btn-primary" type="submit">Simpan Data</button>
