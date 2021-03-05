@@ -6,7 +6,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('mapel','MapelController');
-Route::resource('siswa','SiswaController');
 
 Auth::routes();
+
+Route::resource('guru', 'GuruController');
+Route::resource('rayon', 'RayonController');
+Route::resource('mapel','MapelController');
+Route::resource('siswa','SiswaController');

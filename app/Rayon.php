@@ -13,4 +13,8 @@ class Rayon extends Model
     public function siswa(){
     	return $this->hasMany('App\Siswa');
     }
+
+    public function guru(){
+        return $this->belongsTo(Guru::class);
+    }
 }
