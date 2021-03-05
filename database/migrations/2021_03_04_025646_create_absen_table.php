@@ -15,7 +15,7 @@ class CreateAbsenTable extends Migration
     {
         Schema::create('absen', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('siswa_id')->nullable();
+            $table->unsignedBigInteger('siswa_id');
             $table->integer('sakit');
             $table->integer('izin');
             $table->integer('alpha');
