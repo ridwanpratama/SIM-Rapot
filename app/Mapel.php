@@ -11,8 +11,8 @@ class Mapel extends Model
     protected $fillable = ['nama_mapel','guru_id'];
 
     public function guru()
-{
-	return $this->belongsTo('App\Guru');
-}
+    {
+	    return $this->belongsTo('App\Guru');
+    }
 }
 

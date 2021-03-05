@@ -7,5 +7,6 @@ Route::get('/', function () {
 });
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('mapel','MapelController');
+Route::resource('siswa','SiswaController');
 
 Auth::routes();
