@@ -46,4 +46,5 @@
     @stack('page_scripts')
 </body>
 
+
 </html>
