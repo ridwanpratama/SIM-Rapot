@@ -14,7 +14,7 @@
 					<a href="{{ route('guru.create') }}" class="btn btn-sm btn-primary float-right">Tambah</a>
 				</div>
 					<div class="card-body">
-						<table class="table table-responsive-sm table-bordered table-striped table-sm">
+						<table id="table" class="table table-striped table-bordered" style="width:100%">
 						<thead>
 							<tr>
 								<th>#</th>

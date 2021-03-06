@@ -11,7 +11,7 @@
         <h1>Tambah guru</h1>
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header"><strong>Tambah guru</strong> </div>
+                <div class="card-header"><strong>Edit guru</strong> </div>
                 <div class="card-body">
                     <form class="form-horizontal" action="{{ route('guru.update', [$guru->id]) }}" method="post"
                         enctype="multipart/form-data">

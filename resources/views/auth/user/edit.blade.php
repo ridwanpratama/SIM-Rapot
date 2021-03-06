@@ -1,32 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+@extends('layouts.app')
+@section('breadcrumb')
+    <ol class="breadcrumb border-0 m-0">
+        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('user.index') }}">Data User</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('user.edit') }}">Edit User</a></li>
+    </ol>
+@endsection
+@section('content')
 
-    <title>Register | {{ config('app.name') }}</title>
-    <meta name="description" content="CoreUI Template - InfyOm Laravel Generator">
-    <meta name="keyword" content="CoreUI,Bootstrap,Admin,Template,InfyOm,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-
-    <!-- CoreUI CSS -->
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}" crossorigin="anonymous">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
-          integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
-          crossorigin="anonymous"/>
-</head>
-<body class="c-app flex-row align-items-center">
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-12 col-lg-12">
             <div class="card mx-4">
                 <div class="card-body p-4">
-                    <form method="post" action="{{ url('/register') }}">
+                    <form class="form-horizontal" action="{{route('user.update',[$user->id])}}" method="post" enctype="multipart/form-data">
                         @csrf
-                        <h1>Register</h1>
-                        <p class="text-muted">Create your account</p>
+                        @method('PUT')
+                        <h2>Tambah akun user</h2>
                         
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -35,7 +25,7 @@
                               </span>
                             </div>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                   name="name" value="{{ old('name') }}"
+                                   name="name" value="{{ $user->name }}"
                                    placeholder="Full Name">
                             @error('name')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -49,7 +39,7 @@
                               </span>
                             </div>
                             <input type="text" class="form-control @error('username') is-invalid @enderror"
-                                   name="username" value="{{ old('username') }}"
+                                   name="username" value="{{ $user->username }}"
                                    placeholder="Username">
                             @error('username')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -63,7 +53,7 @@
                                 </span>
                             </div>
                             <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                   name="email" value="{{ old('email') }}" placeholder="Email">
+                                   name="email" value="{{ $user->email }}" placeholder="Email">
                             @error('email')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -72,13 +62,13 @@
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">
-                                    <i class="cil-lock-locked"></i>
+                                    <i class="cil-user"></i>
                               </span>
                             </div>
                             <select name="level" id="level" class="form-control @error('level') is-invalid @enderror">
-                                <option value="" selected>Pilih jabatan user</option>
-                                <option value="admin">Admin</option>
-                                <option value="guru">Guru</option>
+                                <option>{{ $user->level }}</option>                      
+                                <option value="admin" @if($user->level == 'admin') @endif>Admin</option>
+                                <option value="guru" @if($user->level == 'guru') @endif>Guru</option>
                             </select>
                 
                             @error('password')
@@ -99,18 +89,7 @@
                             @enderror
                         </div>
 
-                        <div class="input-group mb-4">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                  <i class="cil-lock-locked"></i>
-                              </span>
-                            </div>
-                            <input type="password" name="password_confirmation" class="form-control"
-                                   placeholder="Confirm password">
-                        </div>
-
-                        <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
-                        <a href="{{ route('login') }}" class="text-center">I already have a membership</a>
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">Simpan</button>
                         
                     </form>
                 </div>
@@ -118,9 +97,4 @@
         </div>
     </div>
 </div>
-
-<!-- CoreUI -->
-<script src="{{ mix('js/app.js') }}" defer></script>
-
-</body>
-</html>
+@endsection

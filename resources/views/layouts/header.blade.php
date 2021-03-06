@@ -12,23 +12,11 @@
 <ul class="c-header-nav">
     <li class="c-header-nav-item dropdown">
         <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-            <div class="c-avatar">
-                <img class="c-avatar-img" src="{{ asset('images/logo.png') }}" alt="">
+            <div>
+                <i>Hi, {{ auth()->user()->name }}</i>
             </div>
         </a>
-        <div class="dropdown-menu dropdown-menu-right pt-0">
 
-            <div class="dropdown-header bg-light py-2"><strong>Account</strong></div>
-            <a class="dropdown-item" href="#">
-                <i class="c-icon mfe-2 cil-user"></i>Profile
-            </a>
-            <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                <i class="c-icon mfe-2 cil-account-logout"></i>Logout
-            </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf
-            </form>
-        </div>
     </li>
 </ul>
 

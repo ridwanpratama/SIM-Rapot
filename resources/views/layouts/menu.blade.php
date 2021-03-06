@@ -43,7 +43,13 @@
 
 <li class="c-sidebar-nav-item">
     <a class="c-sidebar-nav-link {{ Request::is('upd') ? 'c-active' : '' }}" href="{{ route('upd.index') }}">
-        <i class="c-sidebar-nav-icon cil-people"></i>Data Upd
+        <i class="c-sidebar-nav-icon cil-people"></i>Data UPD
+    </a>
+</li>
+
+<li class="c-sidebar-nav-item">
+    <a class="c-sidebar-nav-link {{ Request::is('user') ? 'c-active' : '' }}" href="{{ route('user.index') }}">
+        <i class="c-sidebar-nav-icon cil-people"></i>Data User
     </a>
 </li>
 
