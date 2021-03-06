@@ -2,64 +2,101 @@
 
 namespace App\Http\Controllers;
 
-use App\Jurusan;
 use Illuminate\Http\Request;
+use App\Jurusan;
 
 class JurusanController extends Controller
 {
-    
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $jurusans = Jurusan::latest()->paginate(5);
-  
-        return view('jurusan.index',compact('jurusans'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        $data_jurusan = Jurusan::get();
+        return view('jurusan.index',compact('data_jurusan'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         return view('jurusan.create');
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
-        $request->validate([
-            'nama_jurusan' => 'required',
+        $this->validate($request,[
+            'nama_jurusan' => 'required'
         ]);
 
-        Jurusan::create($request->all());
+        Jurusan::create([
+            'nama_jurusan' => $request->get('nama_jurusan')
+        ]);
 
-        return redirect()->route('jurusan.index')
-                        ->with('success', 'Data berhasil ditambahkan');
+        return redirect()->route('jurusan.index')->with('message','Jurusan berhasil di tambah');
     }
 
-    public function show(Jurusan $jurusan)
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
     {
         //
     }
 
-    public function edit(Jurusan $jurusan)
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
     {
-        return view('jurusan.edit', compact('jurusan'));
+        $data_jurusan = Jurusan::find($id);
+        return view('jurusan.edit',compact('data_jurusan'));
     }
 
-    public function update(Request $request, Jurusan $jurusan)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
     {
-        $request->validate([
-            'nama_jurusan' => 'required',
+        $data_jurusan = Jurusan::find($id);
+        $data_jurusan->update([
+            'nama_jurusan' => $request->get('nama_jurusan')
         ]);
 
-        $jurusan->update($request->all());
+        return redirect()->route('jurusan.index')->with('message','Jurusan berhasil di perbarui');
+    }
 
-        return redirect()->route('jurusan.index')
-                        ->with('success', 'Data berhasil diperbarui');
-    } 
-
-    public function destroy(Jurusan $jurusan)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
     {
-        $jurusan->delete();
-
-        return redirect()->route('jurusan.index')
-                        ->with('success', 'Data berhasil dihapus');
+        $data_jurusan = Jurusan::find($id);
+        $data_jurusan->delete();
+        return redirect('jurusan');
     }
 }

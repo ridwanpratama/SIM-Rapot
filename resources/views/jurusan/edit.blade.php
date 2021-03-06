@@ -1,43 +1,36 @@
 @extends('layouts.app')
-   
+@section('breadcrumb')
+    <ol class="breadcrumb border-0 m-0">
+        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('jurusan.index') }}">Data Jurusan</a></li>
+    </ol>
+@endsection
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Edit Data</h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('jurusan.index') }}"> Back</a>
+
+    <div class="container-fluid">
+        <h1>Edit Jurusan</h1>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header"><strong>Edit Jurusan</strong> </div>
+                <div class="card-body">
+                    <form class="form-horizontal" action="{{ route('jurusan.update', [$data_jurusan->id]) }}" method="post"
+                        enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        {{ method_field('PUT') }}
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">Nama jurusan</label>
+                            <div class="col-md-9">
+                                <input class="form-control" id="nama_jurusan" type="text" name="nama_jurusan"
+                                    value="{{ $data_jurusan->nama_jurusan }}" placeholder="Masukkan nama jurusan">
+                            </div>
+                        </div>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-sm btn-primary" type="submit"> Edit Jurusan</button>
+                    <button class="btn btn-sm btn-danger" type="reset"> Reset</button>
+                </div>
+                </form>
             </div>
         </div>
     </div>
-   
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-  
-    <form action="{{ route('jurusan.update',$jurusan->id) }}" method="POST">
-        @csrf
-        @method('PUT')
-   
-         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Nama Jurusan:</strong>
-                    <input type="text" name="nama_jurusan" value="{{ $jurusan->nama_jurusan }}" class="form-control" placeholder="Nama Jurusan">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </div>
-   
-    </form>
 @endsection

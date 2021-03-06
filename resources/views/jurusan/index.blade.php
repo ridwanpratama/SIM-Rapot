@@ -1,48 +1,49 @@
 @extends('layouts.app')
-
+@section('breadcrumb')
+    <ol class="breadcrumb border-0 m-0">
+        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('jurusan.index') }}">Data Jurusan</a></li>
+    </ol>
+@endsection
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Input Data Jurusan</h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('jurusan.create') }}"> Tambah Data</a>
-            </div>
-        </div>
+
+    <div class="container-fluid">
+        <div class="col-lg-12">
+			<div class="card">
+				<div class="card-header"> Jurusan
+					<a href="{{ route('jurusan.create') }}" class="btn btn-sm btn-primary float-right">Tambah</a>
+				</div>
+					<div class="card-body">
+						<table class="table table-responsive-sm table-bordered table-striped table-sm">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Nama Jurusan</th>
+								<th>Aksi</th>
+							</tr>
+						</thead>
+							<tbody>
+								<tr>
+									<?php $i=1; ?>
+									@foreach($data_jurusan as $jurusan)
+									<td>{{ $i++ }}</td>
+									<td>{{ $jurusan->nama_jurusan }}</td>
+									<td><a href="">
+				      	<form action="{{route('jurusan.destroy',[$jurusan->id])}}" method="post">
+				      		{{csrf_field()}}
+				      		{{method_field('DELETE')}}
+				      		<button class="btn btn-danger btn-sm" onclick="return confirm('apakah anda yakin ingin menghapus Mata Pelajaran: {{$jurusan->nama_jurusan}}')">Hapus</button>
+				      		<a href="{{route('jurusan.edit',[$jurusan->id])}}" class="btn btn-warning btn-sm">Ubah</a>
+				      	</td>
+				      		
+				      	</form>
+									
+								</tr>
+							</tbody>
+							@endforeach
+						</table>
+					</div>
+				</div>
+			</div>
     </div>
-
-    <br>
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
-
-    <table class="table table-bordered">
-        <tr>
-            <th>No</th>
-            <th>Nama Jurusan</th>
-            <th width="280px">Aksi</th>
-        </tr>
-        @foreach ($jurusans as $jurusan)
-            <tr>
-                <td>{{ ++$i }}</td>
-                <td>{{ $jurusan->nama_jurusan }}</td>
-                <td>
-                    <form action="{{ route('jurusan.destroy', $jurusan->id) }}" method="POST">
-
-                        <a class="btn btn-primary" href="{{ route('jurusan.edit',$jurusan->id) }}">Edit</a>
-    
-                        @csrf
-                        @method('DELETE')
-        
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                </td> 
-            </tr>
-        @endforeach
-    </table>
-
-    {!! $jurusans->links() !!}
 @endsection

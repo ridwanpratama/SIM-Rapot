@@ -1,39 +1,35 @@
 @extends('layouts.app')
-
+@section('breadcrumb')
+    <ol class="breadcrumb border-0 m-0">
+        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('jurusan.index') }}">Data Siswa</a></li>
+    </ol>
+@endsection
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Tambah Data</h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('jurusan.index') }}"> Back</a>
+
+    <div class="container-fluid">
+        <h1>Tambah Jurusan</h1>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header"><strong>Tambah Jurusan</strong> </div>
+                <div class="card-body">
+                    <form class="form-horizontal" action="{{ route('jurusan.store') }}" method="post"
+                        enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">Nama Jurusan</label>
+                            <div class="col-md-9">
+                                <input class="form-control" id="nama_jurusan" type="text" name="nama_jurusan"
+                                    placeholder="Masukkan nama jurusan">
+                            </div>
+                        </div>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-sm btn-primary" type="submit"> Tambah Jurusan</button>
+                    <button class="btn btn-sm btn-danger" type="reset"> Reset</button>
+                </div>
+                </form>
             </div>
         </div>
     </div>
-
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
-    <form action="{{ route('jurusan.store') }}" method="POST">
-        @csrf
-
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Nama Jurusan:</strong>
-                    <input type="text" name="nama_jurusan" class="form-control" placeholder="Nama Jurusan">
-                </div>
-            </div>
-        </div>
-
-    </form>
 @endsection
