@@ -9,13 +9,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::middleware(['auth'])->group(function () {
-    Route::resource('jurusan', 'JurusanController');
-    Route::resource('guru', 'GuruController');
-    Route::resource('rayon', 'RayonController');
-    Route::resource('mapel', 'MapelController');
-    Route::resource('siswa', 'SiswaController');
-    Route::resource('absen', 'AbsenController');
-});
-
-
+Route::resource('jurusan', 'JurusanController');
+Route::resource('guru', 'GuruController');
+Route::resource('rayon', 'RayonController');
+Route::resource('mapel', 'MapelController');
+Route::resource('siswa', 'SiswaController');
+Route::resource('absen', 'AbsenController');
