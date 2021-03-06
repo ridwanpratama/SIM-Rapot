@@ -5,7 +5,7 @@
         <img src="{{ asset('images/logo.png') }}" width="46" height="46"
              class="c-sidebar-brand-minimized" alt="Brand Logo">
     </div>
-    <ul class="c-sidebar-nav">
+    <ul class="c-sidebar-nav">  
         @include('layouts.menu')
         <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
             <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
