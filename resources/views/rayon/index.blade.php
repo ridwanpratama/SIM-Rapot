@@ -1,50 +1,50 @@
 @extends('layouts.app')
-
+@section('breadcrumb')
+    <ol class="breadcrumb border-0 m-0">
+        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('rayon.index') }}">Data Rayon</a></li>
+    </ol>
+@endsection
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Input Data Rayon</h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('rayon.create') }}"> Tambah Data</a>
-            </div>
-        </div>
+
+    <div class="container-fluid">
+        <div class="col-lg-12">
+			<div class="card">
+				<div class="card-header"> Rayon
+					<a href="{{ route('rayon.create') }}" class="btn btn-sm btn-primary float-right">Tambah</a>
+				</div>
+					<div class="card-body">
+						<table class="table table-responsive-sm table-bordered table-striped table-sm">
+						<thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nama Rayon</th>
+                                <th>Nama Guru</th>
+                                <th>Aksi</th>
+                            </tr>
+						</thead>
+							<tbody>
+								<tr>
+									@foreach($rayons as $rayon)
+									<td>{{ $i++ }}</td>
+									<td>{{ $rayon->nama_rayon }}</td>
+									<td>{{ $rayon->guru->nama_guru }}</td>
+									<td><a href="">
+				      	    <form action="{{route('rayon.destroy',[$rayon->id])}}" method="post">
+				      		{{csrf_field()}}
+				      		{{method_field('DELETE')}}
+				      		<button class="btn btn-danger btn-sm" onclick="return confirm('apakah anda yakin ingin menghapus Mata Pelajaran: {{$rayon->nama_rayon}}')">Hapus</button>
+				      		<a href="{{route('rayon.edit',[$rayon->id])}}" class="btn btn-warning btn-sm">Ubah</a>
+				      	</td>
+				      		
+				      	</form>
+									
+								</tr>
+							</tbody>
+							@endforeach
+						</table>
+					</div>
+				</div>
+			</div>
     </div>
-
-    <br>
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
-
-    <table class="table table-bordered">
-        <tr>
-            <th>No</th>
-            <th>Nama Rayon</th>
-            <th>Nama Guru</th>
-            <th width="280px">Aksi</th>
-        </tr>
-        @foreach ($rayons as $rayon)
-            <tr>
-                <td>{{ ++$i }}</td>
-                <td>{{ $rayon->nama_rayon }}</td>
-                <td>{{ $rayon->guru->nama_guru }}</td>
-                <td>
-                    <form action="{{ route('rayon.destroy', $rayon->id) }}" method="POST">
-
-                        <a class="btn btn-primary" href="{{ route('rayon.edit',$rayon->id) }}">Edit</a>
-
-                        @csrf
-                        @method('DELETE')
-        
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                </td> 
-            </tr>
-        @endforeach
-    </table>
-
-    {!! $rayons->links() !!}
 @endsection
