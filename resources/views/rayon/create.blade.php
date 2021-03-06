@@ -1,53 +1,47 @@
 @extends('layouts.app')
-
+@section('breadcrumb')
+    <ol class="breadcrumb border-0 m-0">
+        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('rayon.index') }}">Data Rayon</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('rayon.create') }}">Tambah Data Rayon</a></li>
+    </ol>
+@endsection
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Tambah Data</h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('rayon.index') }}"> Back</a>
+
+    <div class="container-fluid">
+        <h1>Tambah Rayon</h1>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header"><strong>Tambah Rayon</strong> </div>
+                <div class="card-body">
+                    <form class="form-horizontal" action="{{ route('rayon.store') }}" method="post"
+                        enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">Nama Rayon</label>
+                            <div class="col-md-9">
+                                <input class="form-control" id="nama_rayon" type="text" name="nama_rayon"
+                                    placeholder="Masukkan nama rayon">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="select1">Guru</label>
+                            <div class="col-md-9">
+                                <select class="form-control" id="guru_id" name="guru_id">
+                                    <option value="0">--Pilih Guru--</option>
+                                    @foreach (App\Guru::all() as $guru)
+                                        <option value="{{ $guru->id }}">{{ $guru->nama_guru }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-sm btn-primary" type="submit"> Tambah rayon</button>
+                    <button class="btn btn-sm btn-danger" type="reset"> Reset</button>
+                </div>
+                </form>
             </div>
         </div>
     </div>
-
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
-    <form action="{{ route('rayon.store') }}" method="POST">
-        @csrf
-
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Nama rayon:</strong>
-                    <input type="text" name="nama_rayon" class="form-control" placeholder="Nama Rayon">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Nama Guru:</strong>
-                    <select name="guru_id" id="guru_id " class="form-control">
-                        <option value="">Pilih</option>
-                            @foreach ($teachers as $rayon)
-                                <option value="{{ $rayon->id }}">{{ ucfirst($rayon->nama_guru) }}</option>
-                            @endforeach
-                    </select>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </div>
-
-    </form>
 @endsection
