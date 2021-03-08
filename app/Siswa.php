@@ -18,4 +18,6 @@ class Siswa extends Model
     {
 	    return $this->belongsTo('App\Rayon');
     }
+
+
 }

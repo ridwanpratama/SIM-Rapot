@@ -28,11 +28,15 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label class="col-md-3 col-form-label">Nama UPD</label>
+                           <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="select1">Nama Siswa</label>
                                 <div class="col-md-9">
-                                    <input class="form-control @error('nama_upd') is-invalid @enderror" id="nama_upd" type="text" name="nama_upd"
-                                        placeholder="@error('nama_upd') {{ $message }} @enderror" value="{{ $upd->nama_upd }}">
+                                    <select class="form-control" id="detail_upd_id" name="detail_upd_id">
+                                        <option value="{{ $upd->detail_upd_id }}">{{ $upd->detail->nama_upd }}</option>
+                                        @foreach (App\Detail::all() as $upd_detail)
+                                            <option value="{{ $upd_detail->id }}">{{ $upd_detail->nama_upd }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
 

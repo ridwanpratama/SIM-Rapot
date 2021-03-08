@@ -28,8 +28,8 @@
                                 @foreach ($upd as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item->siswa_id }}</td>
-                                    <td>{{ $item->nama_upd }}</td>
+                                    <td>{{ $item->siswa->nama_siswa }}</td>
+                                    <td>{{ $item->detail->nama_upd }}</td>
                                     <td>{{ $item->nilai_upd }}</td>
                                     <td>
                                         <form action="{{route('upd.destroy',[$item->id])}}" method="post">
