@@ -7,10 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Upd extends Model
 {
     protected $table = "upd";
-    protected $fillable = ['siswa_id','nama_upd','nilai_upd'];
+    protected $fillable = ['siswa_id','detail_upd_id','nilai_upd'];
 
     public function siswa()
     {
 	    return $this->belongsTo('App\Siswa');
+    }
+
+    public function detail()
+    {
+    	return $this->belongsTo('App\Detail','detail_upd_id');
     }
 }

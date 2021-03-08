@@ -13,9 +13,4 @@ class Detail extends Model
     {
 	    return $this->belongsTo('App\Guru');
     }
-
-    public function upd()
-    {
-        return $this->hasMany('App\Upd');
-    }
 }

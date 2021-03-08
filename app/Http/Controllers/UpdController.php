@@ -11,12 +11,12 @@ class UpdController extends Controller
     {
         $validation = $request->validate([
             'siswa_id' => 'required|unique:upd,siswa_id',
-            'nama_upd' => 'required',
+            'detail_upd_id' => 'required',
             'nilai_upd' => 'required',
         ],
         [
             'siswa_id.required' => 'Field ini harus diisi!',
-            'nama_upd.required' => 'Field ini harus diisi!',
+            'detail_upd_id.required' => 'Field ini harus diisi!',
             'nilai_upd.required' => 'Field ini harus diisi!'
         ]);
     }
@@ -38,7 +38,7 @@ class UpdController extends Controller
 
         Upd::create([
             'siswa_id' => $request->siswa_id,
-            'nama_upd' => $request->nama_upd,
+            'detail_upd_id' => $request->detail_upd_id,
             'nilai_upd' => $request->nilai_upd
         ]);
 
@@ -56,7 +56,7 @@ class UpdController extends Controller
         $upd = Upd::find($id);
         $upd->update([
             'siswa_id' => $request->get('siswa_id'),
-            'nama_upd' => $request->get('nama_upd'),
+            'detail_upd_id' => $request->get('detail_upd_id'),
             'nilai_upd' => $request->get('nilai_upd')
 
         ]);
