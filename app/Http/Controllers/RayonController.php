@@ -15,10 +15,9 @@ class RayonController extends Controller
      */
     public function index()
     {
-        $rayons = Rayon::with('guru')->orderBy('created_at', 'DESC')->paginate(5);
+        $rayons = Rayon::with('guru')->orderBy('created_at', 'DESC')->get();
 
-        return view('rayon.index', compact('rayons'))
-                ->with('i', (request()->input('page', 1)- 1) * 5);
+        return view('rayon.index', compact('rayons'));
     }
 
     /**

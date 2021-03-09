@@ -14,10 +14,9 @@ class GuruController extends Controller
      */
     public function index()
     {
-        $teacher = Guru::latest()->paginate(5);
+        $teacher = Guru::all();
   
-        return view('guru.index',compact('teacher'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('guru.index',compact('teacher'));
     }
 
     /**

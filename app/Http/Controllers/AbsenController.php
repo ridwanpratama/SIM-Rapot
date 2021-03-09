@@ -14,7 +14,7 @@ class AbsenController extends Controller
      */
     public function index()
     {
-        $absen = Absen::latest()->paginate(1);
+        $absen = Absen::all();
         return view('absen.index', compact('absen'));
     }
 

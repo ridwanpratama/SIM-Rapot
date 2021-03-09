@@ -23,7 +23,7 @@ class UpdController extends Controller
 
     public function index()
     {
-        $upd = Upd::latest()->paginate(1);
+        $upd = Upd::all();
         return view('upd.index',compact('upd'));
     }
 
