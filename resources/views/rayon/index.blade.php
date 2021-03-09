@@ -26,7 +26,7 @@
 							<tbody>
 								<tr>
 									@foreach($rayons as $rayon)
-									<td>{{ $i++ }}</td>
+									<td>{{ $loop->iteration }}</td>
 									<td>{{ $rayon->nama_rayon }}</td>
 									<td>{{ $rayon->guru->nama_guru }}</td>
 									<td><a href="">

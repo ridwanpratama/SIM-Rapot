@@ -27,7 +27,7 @@
 							<tbody>
 								<tr>
 									@foreach($teacher as $guru)
-									<td>{{ $i++ }}</td>
+									<td>{{ $loop->iteration }}</td>
 									<td>{{ $guru->nama_guru }}</td>
                                     <td>{{ $guru->jk }}</td>
                                     <td>{{ $guru->no_telp }}</td>
