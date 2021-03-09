@@ -10,7 +10,7 @@
     <div class="container-fluid">
         <div class="col-lg-12">
 			<div class="card">
-				<div class="card-header"> Mapel
+				<div class="card-header">Data Mapel
 					<a href="{{ route('mapel.create') }}" class="btn btn-sm btn-primary float-right">Tambah</a>
 				</div>
 					<div class="card-body">

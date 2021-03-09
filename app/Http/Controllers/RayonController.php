@@ -49,7 +49,7 @@ class RayonController extends Controller
         Rayon::create($request->all());
 
         return redirect()->route('rayon.index')
-                        ->with('success', 'Data berhasil ditambahkan');
+                        ->with('toast_success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -96,7 +96,7 @@ class RayonController extends Controller
         $rayon->update($request->all());
 
         return redirect()->route('rayon.index')
-                        ->with('success', 'Data berhasil diperbarui');
+                        ->with('toast_success', 'Data berhasil diperbarui');
     }
 
     /**
@@ -110,6 +110,6 @@ class RayonController extends Controller
         $rayon->delete();
 
         return redirect()->route('rayon.index')
-                        ->with('success', 'Data berhasil dihapus');
+                        ->with('toast_warning', 'Data berhasil dihapus');
     }
 }

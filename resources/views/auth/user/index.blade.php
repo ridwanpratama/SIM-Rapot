@@ -37,7 +37,7 @@
                                         <form action="{{route('user.destroy',[$item->id])}}" method="post">
                                             {{csrf_field()}}
                                             {{method_field('DELETE')}}
-                                            <button class="btn btn-danger btn-sm" onclick="return confirm('apakah anda yakin ingin menghapus siswa: {{$item->name}}')">Hapus</button>
+                                            <button class="btn btn-danger btn-sm" onclick="return confirm('apakah anda yakin ingin menghapus user: {{$item->name}}')">Hapus</button>
                                             <a href="{{route('user.edit',[$item->id])}}" class="btn btn-warning btn-sm">Ubah</a>
                                         </td>
                                             

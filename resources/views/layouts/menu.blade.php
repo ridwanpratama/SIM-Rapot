@@ -13,49 +13,49 @@
 
 <li class="c-sidebar-nav-item">
     <a class="c-sidebar-nav-link {{ Request::is('mapel') ? 'c-active' : '' }}" href="{{ route('mapel.index') }}">
-        <i class="c-sidebar-nav-icon cil-people"></i>Data Mapel
+        <i class="c-sidebar-nav-icon cil-book"></i>Data Mapel
     </a>
 </li>
 
 <li class="c-sidebar-nav-item">
     <a class="c-sidebar-nav-link {{ Request::is('guru') ? 'c-active' : '' }}" href="{{ route('guru.index') }}">
-        <i class="c-sidebar-nav-icon cil-people"></i>Data Guru
+        <i class="c-sidebar-nav-icon cil-school"></i>Data Guru
     </a>
 </li>
 
 <li class="c-sidebar-nav-item">
     <a class="c-sidebar-nav-link {{ Request::is('rayon') ? 'c-active' : '' }}" href="{{ route('rayon.index') }}">
-        <i class="c-sidebar-nav-icon cil-people"></i>Data Rayon
+        <i class="c-sidebar-nav-icon cil-home"></i>Data Rayon
     </a>
 </li>
 
 <li class="c-sidebar-nav-item">
     <a class="c-sidebar-nav-link {{ Request::is('jurusan') ? 'c-active' : '' }}" href="{{ route('jurusan.index') }}">
-        <i class="c-sidebar-nav-icon cil-people"></i>Data Jurusan
+        <i class="c-sidebar-nav-icon cil-library-building"></i>Data Jurusan
     </a>
 </li>
 
 <li class="c-sidebar-nav-item">
     <a class="c-sidebar-nav-link {{ Request::is('absen') ? 'c-active' : '' }}" href="{{ route('absen.index') }}">
-        <i class="c-sidebar-nav-icon cil-people"></i>Data Absen
+        <i class="c-sidebar-nav-icon cil-description"></i></i>Data Absen
     </a>
 </li>
 
 <li class="c-sidebar-nav-item">
     <a class="c-sidebar-nav-link {{ Request::is('upd') ? 'c-active' : '' }}" href="{{ route('upd.index') }}">
-        <i class="c-sidebar-nav-icon cil-people"></i>Data Nilai UPD
+        <i class="c-sidebar-nav-icon cil-list-rich"></i>Data Nilai UPD
     </a>
 </li>
 
 <li class="c-sidebar-nav-item">
     <a class="c-sidebar-nav-link {{Request::is('detail_upd') ? 'c-active' : '' }}" href="{{ route('detail.index') }}"> 
-        <i class="c-sidebar-nav-icon cil-people"></i>Data UPD
+        <i class="c-sidebar-nav-icon cil-notes"></i>Data UPD
     </a>
 </li>
 
 <li class="c-sidebar-nav-item">
     <a class="c-sidebar-nav-link {{ Request::is('user') ? 'c-active' : '' }}" href="{{ route('user.index') }}">
-        <i class="c-sidebar-nav-icon cil-people"></i>Data User
+        <i class="c-sidebar-nav-icon cil-settings"></i>Data User
     </a>
 </li>
 

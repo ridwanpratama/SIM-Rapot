@@ -2,7 +2,7 @@
 @section('breadcrumb')
     <ol class="breadcrumb border-0 m-0">
         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('upd.index') }}">Data upd</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('upd.index') }}">Data nilai UPD</a></li>
     </ol>
 @endsection
 @section('content')
@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12">
                 <div class="card">
-                    <div class="card-header">Data upd
+                    <div class="card-header">Data nilai UPD
                         <a href="{{ route('upd.create') }}" class="btn btn-sm btn-primary float-right">Tambah</a>
                     </div>
                     <div class="card-body">
@@ -35,7 +35,7 @@
                                         <form action="{{route('upd.destroy',[$item->id])}}" method="post">
                                             {{csrf_field()}}
                                             {{method_field('DELETE')}}
-                                            <button class="btn btn-danger btn-sm" onclick="return confirm('apakah anda yakin ingin menghapus upd: {{$item->siswa_id}}')">Hapus</button>
+                                            <button class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus nilai upd dari: {{$item->siswa_id}}')">Hapus</button>
                                             <a href="{{route('upd.edit',[$item->id])}}" class="btn btn-warning btn-sm">Ubah</a>
                                         </td>
                                             

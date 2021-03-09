@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Siswa;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class SiswaController extends Controller
 {
@@ -23,7 +24,7 @@ class SiswaController extends Controller
 
     public function index()
     {
-        $siswa = Siswa::latest()->paginate(1);
+        $siswa = Siswa::latest()->paginate(10);
         return view('siswa.index',compact('siswa'));
     }
 
@@ -44,7 +45,7 @@ class SiswaController extends Controller
             'jurusan_id' => $request->jurusan_id
         ]);
 
-        return redirect('siswa');
+        return redirect('siswa')->with('toast_success', 'Data berhasil disimpan!');
     }
 
     public function edit($id)
@@ -64,13 +65,13 @@ class SiswaController extends Controller
             'jurusan_id' => $request->get('jurusan_id')
         ]);
 
-        return redirect()->route('siswa.index')->with('message','Mapel berhasil di perbarui');
+        return redirect()->route('siswa.index')->with('toast_success', 'Data berhasil diupdate!');
     }
 
     public function destroy($id)
     {
         $siswa = Siswa::find($id);
         $siswa->delete();
-        return redirect('siswa');
+        return redirect('siswa')->with('toast_danger', 'Data berhasil dihapus!');
     }
 }

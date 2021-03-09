@@ -45,7 +45,7 @@ class AbsenController extends Controller
 
         $absenBaru->save();
 
-        return redirect(route('absen.index'));
+        return redirect(route('absen.index'))->with('toast_success', 'Data berhasil disimpan!');
     }
 
     /**
@@ -88,7 +88,7 @@ class AbsenController extends Controller
             'alpha' => $request->alpha,
         ]);
 
-        return redirect()->route('absen.index')->with('message', 'Mapel berhasil di perbarui');
+        return redirect()->route('absen.index')->with('toast_success', 'Data berhasil diupdate!');
     }
 
     /**
@@ -101,6 +101,6 @@ class AbsenController extends Controller
     {
         $absen = Absen::find($id);
         $absen->delete();
-        return redirect(route('absen.index'));
+        return redirect(route('absen.index'))->with('toast_warning', 'Data berhasil dihapus!');
     }
 }

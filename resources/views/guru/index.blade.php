@@ -10,7 +10,7 @@
     <div class="container-fluid">
         <div class="col-lg-12">
 			<div class="card">
-				<div class="card-header"> Guru
+				<div class="card-header">Data Guru
 					<a href="{{ route('guru.create') }}" class="btn btn-sm btn-primary float-right">Tambah</a>
 				</div>
 					<div class="card-body">
@@ -35,7 +35,7 @@
 				      	    <form action="{{route('guru.destroy',[$guru->id])}}" method="post">
 				      		{{csrf_field()}}
 				      		{{method_field('DELETE')}}
-				      		<button class="btn btn-danger btn-sm" onclick="return confirm('apakah anda yakin ingin menghapus Nama guru: {{$guru->nama_guru}}')">Hapus</button>
+				      		<button class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus data guru: {{$guru->nama_guru}} ')">Hapus</button>
 				      		<a href="{{route('guru.edit',[$guru->id])}}" class="btn btn-warning btn-sm">Ubah</a>
 				      	</td>
 				      		

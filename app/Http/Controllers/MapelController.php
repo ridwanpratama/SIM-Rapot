@@ -46,7 +46,7 @@ class MapelController extends Controller
             'guru_id' => $request->get('guru_id')
         ]);
 
-        return redirect()->route('mapel.index')->with('message','Mapel berhasil di tambah');
+        return redirect()->route('mapel.index')->with('toast_success', 'Data berhasil disimpan!');
     }
 
     /**
@@ -87,7 +87,7 @@ class MapelController extends Controller
             'guru_id' => $request->get('guru_id')
         ]);
 
-        return redirect()->route('mapel.index')->with('message','Mapel berhasil di perbarui');
+        return redirect()->route('mapel.index')->with('toast_success', 'Data berhasil diupdate!');
     }
 
     /**
@@ -100,6 +100,6 @@ class MapelController extends Controller
     {
         $data_mapel = Mapel::find($id);
         $data_mapel->delete();
-        return redirect('mapel');
+        return redirect('mapel')->with('toast_warning', 'Data berhasil dihapus!');
     }
 }

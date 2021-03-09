@@ -46,7 +46,7 @@ class DetailController extends Controller
             'guru_id' => $request->get('guru_id')
         ]);
 
-        return redirect()->route('detail.index')->with('message','Data UPD berhasil di tambah');
+        return redirect()->route('detail.index')->with('toast_success', 'Data berhasil disimpan!');
     }
 
     /**
@@ -87,7 +87,7 @@ class DetailController extends Controller
             'guru_id' => $request->get('guru_id')
         ]);
 
-        return redirect()->route('detail.index')->with('message','Data UPD berhasil di perbarui');
+        return redirect()->route('detail.index')->with('toast_success', 'Data berhasil diupdate!');
     }
 
     /**
@@ -100,6 +100,6 @@ class DetailController extends Controller
     {
         $detail_upd = Detail::find($id);
         $detail_upd->delete();
-        return redirect('detail');
+        return redirect('detail')->with('toast_warning', 'Data berhasil dihapus!');
     }
 }

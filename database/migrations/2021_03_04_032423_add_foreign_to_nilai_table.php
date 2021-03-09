@@ -14,10 +14,10 @@ class AddForeignToNilaiTable extends Migration
     public function up()
     {
         Schema::table('nilai', function (Blueprint $table) {
-            $table->foreign('siswa_id')->references('id')->on('siswa');
-            $table->foreign('mapel_id')->references('id')->on('mapel');
-            $table->foreign('upd_id')->references('id')->on('upd');
-            $table->foreign('absen_id')->references('id')->on('absen');
+            $table->foreign('siswa_id')->references('id')->on('siswa')->onDelete('cascade');
+            $table->foreign('mapel_id')->references('id')->on('mapel')->onDelete('cascade');
+            $table->foreign('upd_id')->references('id')->on('upd')->onDelete('cascade');
+            $table->foreign('absen_id')->references('id')->on('absen')->onDelete('cascade');
         });
     }
 

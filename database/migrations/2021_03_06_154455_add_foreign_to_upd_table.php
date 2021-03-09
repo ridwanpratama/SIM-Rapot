@@ -14,8 +14,8 @@ class AddForeignToUpdTable extends Migration
     public function up()
     {
         Schema::table('upd', function (Blueprint $table) {
-            $table->foreign('siswa_id')->references('id')->on('siswa');
-            $table->foreign('detail_upd_id')->references('id')->on('detail_upd');
+            $table->foreign('siswa_id')->references('id')->on('siswa')->onDelete('cascade');
+            $table->foreign('detail_upd_id')->references('id')->on('detail_upd')->onDelete('cascade');
         });
     }
 

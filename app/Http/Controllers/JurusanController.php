@@ -44,7 +44,7 @@ class JurusanController extends Controller
             'nama_jurusan' => $request->get('nama_jurusan')
         ]);
 
-        return redirect()->route('jurusan.index')->with('message','Jurusan berhasil di tambah');
+        return redirect()->route('jurusan.index')->with('toast_success', 'Data berhasil disimpan!');
     }
 
     /**
@@ -84,7 +84,7 @@ class JurusanController extends Controller
             'nama_jurusan' => $request->get('nama_jurusan')
         ]);
 
-        return redirect()->route('jurusan.index')->with('message','Jurusan berhasil di perbarui');
+        return redirect()->route('jurusan.index')->with('toast_success', 'Data berhasil diupdate!');
     }
 
     /**
@@ -97,6 +97,6 @@ class JurusanController extends Controller
     {
         $data_jurusan = Jurusan::find($id);
         $data_jurusan->delete();
-        return redirect('jurusan');
+        return redirect('jurusan')->with('toast_warning', 'Data berhasil dihapus!');
     }
 }

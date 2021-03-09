@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-lg-12 col-md-12">
             <div class="card">
-                <div class="card-header">Data Siswa
+                <div class="card-header">Data Absen
                     <a href="{{ route('absen.create') }}" class="btn btn-sm btn-primary float-right">Tambah</a>
                 </div>
                 <div class="card-body">

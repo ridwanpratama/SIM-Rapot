@@ -14,7 +14,7 @@ class AddForeignToRayonTable extends Migration
     public function up()
     {
         Schema::table('rayon', function (Blueprint $table) {
-            $table->foreign('guru_id')->references('id')->on('guru');
+            $table->foreign('guru_id')->references('id')->on('guru')->onDelete('cascade');
         });
     }
 

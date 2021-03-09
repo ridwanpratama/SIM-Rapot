@@ -46,8 +46,7 @@ class GuruController extends Controller
 
         Guru::create($request->all());
 
-        return redirect()->route('guru.index')
-                        ->with('success', 'Data berhasil ditambahkan');
+        return redirect()->route('guru.index')->with('toast_success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -89,8 +88,7 @@ class GuruController extends Controller
 
         $guru->update($request->all());
 
-        return redirect()->route('guru.index')
-                        ->with('success', 'Data berhasil diperbarui');
+        return redirect()->route('guru.index')->with('toast_success', 'Data berhasil diperbarui');
     }
 
     /**
@@ -103,7 +101,6 @@ class GuruController extends Controller
     {
         $guru->delete();
 
-        return redirect()->route('guru.index')
-                        ->with('success', 'Data berhasil dihapus');
+        return redirect()->route('guru.index')->with('toast_warning', 'Data berhasil dihapus!');
     }
 }
