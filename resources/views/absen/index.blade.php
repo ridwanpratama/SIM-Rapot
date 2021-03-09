@@ -47,7 +47,6 @@
                             @endforeach
                         </tbody>
                     </table>
-                    {{ $absen->links() }}
                 </div>
             </div>
         </div>

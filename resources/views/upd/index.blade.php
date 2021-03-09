@@ -45,7 +45,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{ $upd->links() }}
+                        
                     </div>
                 </div>
             </div>

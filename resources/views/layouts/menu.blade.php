@@ -4,7 +4,7 @@
     </a>
 </li>
 
-<li class="c-sidebar-nav-title">Data Master</li>
+<li class="c-sidebar-nav-title">Data Akademik</li>
 <li class="c-sidebar-nav-item">
     <a class="c-sidebar-nav-link {{ Request::is('siswa') ? 'c-active' : '' }}" href="{{ route('siswa.index') }}">
         <i class="c-sidebar-nav-icon cil-people"></i>Data Siswa
@@ -24,12 +24,6 @@
 </li>
 
 <li class="c-sidebar-nav-item">
-    <a class="c-sidebar-nav-link {{ Request::is('rayon') ? 'c-active' : '' }}" href="{{ route('rayon.index') }}">
-        <i class="c-sidebar-nav-icon cil-home"></i>Data Rayon
-    </a>
-</li>
-
-<li class="c-sidebar-nav-item">
     <a class="c-sidebar-nav-link {{ Request::is('jurusan') ? 'c-active' : '' }}" href="{{ route('jurusan.index') }}">
         <i class="c-sidebar-nav-icon cil-library-building"></i>Data Jurusan
     </a>
@@ -41,15 +35,23 @@
     </a>
 </li>
 
+<li class="c-sidebar-nav-title">Data Non Akademik</li>
+
 <li class="c-sidebar-nav-item">
-    <a class="c-sidebar-nav-link {{ Request::is('upd') ? 'c-active' : '' }}" href="{{ route('upd.index') }}">
-        <i class="c-sidebar-nav-icon cil-list-rich"></i>Data Nilai UPD
+    <a class="c-sidebar-nav-link {{ Request::is('rayon') ? 'c-active' : '' }}" href="{{ route('rayon.index') }}">
+        <i class="c-sidebar-nav-icon cil-folder"></i>Data Rayon
     </a>
 </li>
 
 <li class="c-sidebar-nav-item">
     <a class="c-sidebar-nav-link {{Request::is('detail_upd') ? 'c-active' : '' }}" href="{{ route('detail.index') }}"> 
         <i class="c-sidebar-nav-icon cil-notes"></i>Data UPD
+    </a>
+</li>
+
+<li class="c-sidebar-nav-item">
+    <a class="c-sidebar-nav-link {{ Request::is('upd') ? 'c-active' : '' }}" href="{{ route('upd.index') }}">
+        <i class="c-sidebar-nav-icon cil-list-rich"></i>Data Nilai UPD
     </a>
 </li>
 
