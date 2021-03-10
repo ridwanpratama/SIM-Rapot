@@ -16,9 +16,14 @@
                     <form class="form-horizontal" action="{{ route('absen.store') }}" method="post">
                         @csrf
                         <div class="form-group row">
-                            <label class="col-md-3 col-form-label">ID Siswa</label>
+                            <label class="col-md-3 col-form-label" for="select1">Guru</label>
                             <div class="col-md-9">
-                                <input class="form-control @error('nis') is-invalid @enderror" id="nis" type="number" name="siswa_id" placeholder="@error('nis') {{ $message }} @enderror" value="{{ old('nis')}}">
+                                <select class="form-control" id="siswa_id" name="siswa_id">
+                                    <option value="0">--Pilih Siswa--</option>
+                                    @foreach (App\Siswa::all() as $siswa)
+                                        <option value="{{ $siswa->id }}">{{ $siswa->nis }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 

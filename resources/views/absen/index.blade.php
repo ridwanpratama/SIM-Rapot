@@ -23,7 +23,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>ID Siswa</th>
+                                <th>NIS Siswa</th>
                                 <th>Sakit</th>
                                 <th>Izin</th>
                                 <th>Alpa</th>
@@ -34,7 +34,7 @@
                             @foreach ($absen as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->siswa_id }}</td>
+                                <td>{{ $item->siswa->nis }}</td>
                                 <td>{{ $item->sakit }}</td>
                                 <td>{{ $item->izin }}</td>
                                 <td>{{ $item->alpha }}</td>

@@ -19,5 +19,9 @@ class Siswa extends Model
 	    return $this->belongsTo('App\Rayon');
     }
 
+    public function absen(){
+    	return $this->hasMany('App\Absen');
+    }
+
 
 }
