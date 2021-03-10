@@ -16,7 +16,7 @@
                     <form class="form-horizontal" action="{{ route('absen.store') }}" method="post">
                         @csrf
                         <div class="form-group row">
-                            <label class="col-md-3 col-form-label" for="select1">Guru</label>
+                            <label class="col-md-3 col-form-label" for="select1">Siswa</label>
                             <div class="col-md-9">
                                 <select class="form-control" id="siswa_id" name="siswa_id">
                                     <option value="0">--Pilih Siswa--</option>
