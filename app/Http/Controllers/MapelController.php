@@ -57,7 +57,8 @@ class MapelController extends Controller
      */
     public function show($id)
     {
-        //
+        $data_mapel = Mapel::find($id);
+        return view('mapel.show',compact('data_mapel'));
     }
 
     /**
