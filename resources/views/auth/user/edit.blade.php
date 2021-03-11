@@ -1,10 +1,7 @@
 @extends('layouts.app')
 @section('breadcrumb')
-    <ol class="breadcrumb border-0 m-0">
-        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('user.index') }}">Data User</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('user.edit') }}">Edit User</a></li>
-    </ol>
+    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('user.index') }}">Data User</a></li>
 @endsection
 @section('content')
 
@@ -15,8 +12,8 @@
                 <div class="card-body p-4">
                     <form class="form-horizontal" action="{{route('user.update',[$user->id])}}" method="post" enctype="multipart/form-data">
                         @csrf
-                        @method('PUT')
-                        <h2>Tambah akun user</h2>
+                        {{method_field('PUT')}}
+                        <h2>Edit akun user</h2>
                         
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">

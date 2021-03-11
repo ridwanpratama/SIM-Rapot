@@ -14,10 +14,9 @@ class GuruController extends Controller
      */
     public function index()
     {
-        $teacher = Guru::latest()->paginate(5);
+        $teacher = Guru::all();
   
-        return view('guru.index',compact('teacher'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('guru.index',compact('teacher'));
     }
 
     /**
@@ -46,8 +45,7 @@ class GuruController extends Controller
 
         Guru::create($request->all());
 
-        return redirect()->route('guru.index')
-                        ->with('success', 'Data berhasil ditambahkan');
+        return redirect()->route('guru.index')->with('toast_success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -89,8 +87,7 @@ class GuruController extends Controller
 
         $guru->update($request->all());
 
-        return redirect()->route('guru.index')
-                        ->with('success', 'Data berhasil diperbarui');
+        return redirect()->route('guru.index')->with('toast_success', 'Data berhasil diperbarui');
     }
 
     /**
@@ -103,7 +100,6 @@ class GuruController extends Controller
     {
         $guru->delete();
 
-        return redirect()->route('guru.index')
-                        ->with('success', 'Data berhasil dihapus');
+        return redirect()->route('guru.index')->with('toast_warning', 'Data berhasil dihapus!');
     }
 }

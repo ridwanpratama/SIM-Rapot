@@ -14,7 +14,7 @@ class AddForeignToAbsenTable extends Migration
     public function up()
     {
         Schema::table('absen', function (Blueprint $table) {
-            $table->foreign('siswa_id')->references('id')->on('siswa');
+            $table->foreign('siswa_id')->references('id')->on('siswa')->onDelete('cascade');
         });
     }
 

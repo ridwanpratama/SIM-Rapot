@@ -1,4 +1,9 @@
 @extends('layouts.app')
+@section('third_party_stylesheets')
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css') }}">
+@endsection
 @section('breadcrumb')
 <ol class="breadcrumb border-0 m-0">
     <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
@@ -10,7 +15,7 @@
     <div class="row">
         <div class="col-lg-12 col-md-12">
             <div class="card">
-                <div class="card-header">Data Siswa
+                <div class="card-header">Data Absen
                     <a href="{{ route('absen.create') }}" class="btn btn-sm btn-primary float-right">Tambah</a>
                 </div>
                 <div class="card-body">
@@ -18,7 +23,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>ID Siswa</th>
+                                <th>NIS Siswa</th>
                                 <th>Sakit</th>
                                 <th>Izin</th>
                                 <th>Alpa</th>
@@ -29,7 +34,7 @@
                             @foreach ($absen as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->siswa_id }}</td>
+                                <td>{{ $item->siswa->nis }}</td>
                                 <td>{{ $item->sakit }}</td>
                                 <td>{{ $item->izin }}</td>
                                 <td>{{ $item->alpha }}</td>
@@ -47,10 +52,22 @@
                             @endforeach
                         </tbody>
                     </table>
-                    {{ $absen->links() }}
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
+@section('third_party_scripts')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js" defer>
+    </script>
+@endsection
+@push('page_scripts')
+    <script>
+        $(document).ready(function() {
+            $('#table').DataTable();
+        });
+
+    </script>
+@endpush

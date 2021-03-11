@@ -8,4 +8,9 @@ class Absen extends Model
 {
     protected $table = 'absen';
     protected $fillable = ['siswa_id', 'sakit', 'alpha', 'izin'];
+
+    public function siswa()
+    {
+	    return $this->belongsTo('App\Siswa');
+    }
 }
