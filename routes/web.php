@@ -19,6 +19,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('rayon', 'RayonController');
     Route::resource('mapel', 'MapelController');
     Route::resource('detail', 'DetailController');
+    Route::resource('nilai', 'NilaiController');
+    Route::resource('raport', 'RaportController');
 });
 
 Route::middleware(['auth', 'ceklevel:admin'])->group(function () {

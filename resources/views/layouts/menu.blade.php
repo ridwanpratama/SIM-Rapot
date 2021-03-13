@@ -35,6 +35,20 @@
     </a>
 </li>
 
+<li class="c-sidebar-nav-title">Kelola Nilai</li>
+
+<li class="c-sidebar-nav-item">
+    <a class="c-sidebar-nav-link {{ Request::is('nilai.create') ? 'c-active' : '' }}" href="{{ route('nilai.create') }}">
+        <i class="c-sidebar-nav-icon cil-description"></i></i>Input Nilai
+    </a>
+</li>
+
+<li class="c-sidebar-nav-item">
+    <a class="c-sidebar-nav-link {{ Request::is('raport.index') ? 'c-active' : '' }}" href="{{ route('raport.index') }}">
+        <i class="c-sidebar-nav-icon cil-description"></i></i>Kelola Raport
+    </a>
+</li>
+
 <li class="c-sidebar-nav-title">Data Non Akademik</li>
 
 <li class="c-sidebar-nav-item">

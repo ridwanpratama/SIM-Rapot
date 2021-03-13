@@ -17,4 +17,8 @@ class Rayon extends Model
     public function guru(){
         return $this->belongsTo(Guru::class);
     }
+
+    public function nilai(){
+    	return $this->hasMany('App\Nilai');
+    }
 }
